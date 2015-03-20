@@ -7,13 +7,16 @@ import de.yellowapple.miniLD58.GameMain;
 
 public class HtmlLauncher extends GwtApplication {
 
-        @Override
-        public GwtApplicationConfiguration getConfig () {
-                return new GwtApplicationConfiguration(480, 320);
-        }
+    int width = GameMain.resolutionWidth;
+    int height = GameMain.resolutionHeight;
 
-        @Override
-        public ApplicationListener getApplicationListener () {
-                return new GameMain();
-        }
+    @Override
+    public GwtApplicationConfiguration getConfig() {
+	return new GwtApplicationConfiguration(width, height);
+    }
+
+    @Override
+    public ApplicationListener getApplicationListener() {
+	return new GameMain();
+    }
 }
