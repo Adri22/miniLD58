@@ -7,10 +7,10 @@ import com.badlogic.gdx.math.Vector3;
 public class InputHandler implements InputProcessor {
 
     private OrthographicCamera camera;
-    private ObjectsHandler oHandler;
+    private ObjectHandler oHandler;
     private Vector3 clickPos;
 
-    public InputHandler(OrthographicCamera camera, ObjectsHandler oHandler) {
+    public InputHandler(OrthographicCamera camera, ObjectHandler oHandler) {
 	this.camera = camera;
 	this.oHandler = oHandler;
 	clickPos = new Vector3();

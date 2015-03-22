@@ -1,5 +1,7 @@
 package de.yellowapple.miniLD58;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class GameObject {
@@ -18,7 +20,9 @@ public abstract class GameObject {
 
     public abstract void update();
 
-    public abstract void render();
+    public abstract void renderShapes(ShapeRenderer sr);
+
+    public abstract void renderSprites(SpriteBatch batch);
 
     // ----------------------
     // get position

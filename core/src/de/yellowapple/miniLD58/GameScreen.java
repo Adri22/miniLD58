@@ -9,7 +9,7 @@ public class GameScreen implements Screen {
 
     private GameMain game;
     private OrthographicCamera camera;
-    private ObjectsHandler oHandler;
+    private ObjectHandler oHandler;
     private InputHandler input;
     private SoundHandler sound;
 
@@ -18,7 +18,7 @@ public class GameScreen implements Screen {
 	camera = new OrthographicCamera();
 	camera.setToOrtho(false, game.resolutionWidth, game.resolutionHeight);
 	sound = new SoundHandler();
-	oHandler = new ObjectsHandler();
+	oHandler = new ObjectHandler();
 	input = new InputHandler(camera, oHandler);
 	Gdx.input.setInputProcessor(input);
     }
@@ -32,8 +32,12 @@ public class GameScreen implements Screen {
 
 	camera.update();
 
+	// sprite-rendering
+	//
 	game.batch.setProjectionMatrix(camera.combined);
 	game.batch.begin();
+
+	oHandler.renderObjectSprites(game.batch);
 
 	game.font.draw(
 		game.batch,
@@ -42,6 +46,16 @@ public class GameScreen implements Screen {
 		game.resolutionHeight - 5);
 
 	game.batch.end();
+
+	// shape-rendering
+	//
+	game.shapeRender.setProjectionMatrix(camera.combined);
+	game.shapeRender.setAutoShapeType(true);
+	game.shapeRender.begin();
+
+	oHandler.renderObjectShapes(game.shapeRender);
+
+	game.shapeRender.end();
     }
 
     @Override
