@@ -1,9 +1,10 @@
-package de.yellowapple.miniLD58;
+package de.yellowapple.miniLD58.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import de.yellowapple.miniLD58.core.GameMain;
 
 public class MainMenuScreen implements Screen {
 
@@ -58,5 +59,6 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void dispose() {
+	// dispose main menu graphics here
     }
 }

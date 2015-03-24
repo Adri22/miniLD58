@@ -1,8 +1,9 @@
-package de.yellowapple.miniLD58;
+package de.yellowapple.miniLD58.core;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 
 public abstract class GameObject {
 
@@ -18,7 +19,7 @@ public abstract class GameObject {
 	this.velY = 0;
     }
 
-    public abstract void update();
+    public abstract void update(Array<GameObject> objects);
 
     public abstract void renderShapes(ShapeRenderer sr);
 
@@ -101,6 +102,8 @@ public abstract class GameObject {
     }
 
     // ----------------------
+
+    // public abstract <T> T getBounds();
 
     public ObjectID getID() {
 	return id;

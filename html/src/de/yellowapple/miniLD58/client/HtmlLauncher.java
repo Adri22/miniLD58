@@ -3,7 +3,7 @@ package de.yellowapple.miniLD58.client;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import de.yellowapple.miniLD58.GameMain;
+import de.yellowapple.miniLD58.core.GameMain;
 
 public class HtmlLauncher extends GwtApplication {
 

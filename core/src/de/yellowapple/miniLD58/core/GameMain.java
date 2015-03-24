@@ -1,9 +1,10 @@
-package de.yellowapple.miniLD58;
+package de.yellowapple.miniLD58.core;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import de.yellowapple.miniLD58.screens.MainMenuScreen;
 
 public class GameMain extends Game {
 

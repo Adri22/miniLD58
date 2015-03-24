@@ -2,7 +2,7 @@ package de.yellowapple.miniLD58.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import de.yellowapple.miniLD58.GameMain;
+import de.yellowapple.miniLD58.core.GameMain;
 
 public class DesktopLauncher {
 

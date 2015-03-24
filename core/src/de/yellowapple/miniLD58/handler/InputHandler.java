@@ -1,4 +1,4 @@
-package de.yellowapple.miniLD58;
+package de.yellowapple.miniLD58.handler;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -36,7 +36,8 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-	// TODO Auto-generated method stub
+	clickPos.set(screenX, screenY, 0);
+	System.out.println("x: " + clickPos.x + " - y: " + clickPos.y);
 	return false;
     }
 

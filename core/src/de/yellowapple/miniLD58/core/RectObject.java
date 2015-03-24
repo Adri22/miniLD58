@@ -1,4 +1,4 @@
-package de.yellowapple.miniLD58;
+package de.yellowapple.miniLD58.core;
 
 import com.badlogic.gdx.math.Rectangle;
 

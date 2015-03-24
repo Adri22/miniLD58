@@ -1,8 +1,9 @@
-package de.yellowapple.miniLD58;
+package de.yellowapple.miniLD58.handler;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
+import de.yellowapple.miniLD58.core.GameObject;
 
 public class ObjectHandler {
 
@@ -13,7 +14,7 @@ public class ObjectHandler {
 
     public void updateObjects() {
 	for (int i = 0; i < objects.size; i++) {
-	    this.objects.get(i).update();
+	    this.objects.get(i).update(objects);
 	}
     }
 

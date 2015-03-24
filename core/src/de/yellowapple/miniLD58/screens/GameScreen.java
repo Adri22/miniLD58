@@ -1,9 +1,13 @@
-package de.yellowapple.miniLD58;
+package de.yellowapple.miniLD58.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import de.yellowapple.miniLD58.core.GameMain;
+import de.yellowapple.miniLD58.handler.InputHandler;
+import de.yellowapple.miniLD58.handler.ObjectHandler;
+import de.yellowapple.miniLD58.handler.SoundHandler;
 
 public class GameScreen implements Screen {
 
@@ -24,6 +28,7 @@ public class GameScreen implements Screen {
     }
 
     private void updateGame() {
+	oHandler.updateObjects();
     }
 
     private void renderGame() {
