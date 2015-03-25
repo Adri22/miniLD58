@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import de.yellowapple.miniLD58.core.GameMain;
+import de.yellowapple.miniLD58.handler.GameHandler;
 import de.yellowapple.miniLD58.handler.InputHandler;
 import de.yellowapple.miniLD58.handler.ObjectHandler;
 import de.yellowapple.miniLD58.handler.SoundHandler;
@@ -16,6 +17,7 @@ public class GameScreen implements Screen {
     private ObjectHandler oHandler;
     private InputHandler input;
     private SoundHandler sound;
+    private GameHandler gHandler;
 
     public GameScreen(GameMain g) {
 	game = g;
@@ -23,8 +25,10 @@ public class GameScreen implements Screen {
 	camera.setToOrtho(false, game.resolutionWidth, game.resolutionHeight);
 	sound = new SoundHandler();
 	oHandler = new ObjectHandler();
+	gHandler = new GameHandler(oHandler);
 	input = new InputHandler(camera, oHandler);
 	Gdx.input.setInputProcessor(input);
+	gHandler.initGame();
     }
 
     private void updateGame() {

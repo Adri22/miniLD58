@@ -21,9 +21,13 @@ public abstract class GameObject {
 
     public abstract void update(Array<GameObject> objects);
 
+    public abstract void update(Array<GameObject> objects, float velX, float velY);
+
     public abstract void renderShapes(ShapeRenderer sr);
 
     public abstract void renderSprites(SpriteBatch batch);
+
+    protected abstract boolean checkCollision(Array<GameObject> objects);
 
     // ----------------------
     // get position

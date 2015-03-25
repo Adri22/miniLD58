@@ -4,6 +4,8 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector3;
 
+import de.yellowapple.miniLD58.core.ObjectID;
+
 public class InputHandler implements InputProcessor {
 
     private OrthographicCamera camera;
@@ -18,7 +20,16 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-	// TODO Auto-generated method stub
+	switch (keycode) {
+	    case 38:
+		oHandler.updateObjects(0, -5, ObjectID.PlayerBar);
+		break; // up
+	    case 40:
+		oHandler.updateObjects(0, 5, ObjectID.PlayerBar);
+		break; // down
+	    default:
+		break;
+	}
 	return false;
     }
 
