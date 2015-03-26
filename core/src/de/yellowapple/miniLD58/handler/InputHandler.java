@@ -1,9 +1,9 @@
 package de.yellowapple.miniLD58.handler;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector3;
-
 import de.yellowapple.miniLD58.core.ObjectID;
 
 public class InputHandler implements InputProcessor {
@@ -21,12 +21,12 @@ public class InputHandler implements InputProcessor {
     @Override
     public boolean keyDown(int keycode) {
 	switch (keycode) {
-	    case 38:
-		oHandler.updateObjects(0, -5, ObjectID.PlayerBar);
-		break; // up
-	    case 40:
-		oHandler.updateObjects(0, 5, ObjectID.PlayerBar);
+	    case Input.Keys.LEFT:
+		oHandler.updateObjects(0, -300, ObjectID.PlayerBar);
 		break; // down
+	    case Input.Keys.RIGHT:
+		oHandler.updateObjects(0, 300, ObjectID.PlayerBar);
+		break; // up
 	    default:
 		break;
 	}
@@ -35,7 +35,7 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean keyUp(int keycode) {
-	// TODO Auto-generated method stub
+	oHandler.updateObjects(0, 0, ObjectID.PlayerBar);
 	return false;
     }
 

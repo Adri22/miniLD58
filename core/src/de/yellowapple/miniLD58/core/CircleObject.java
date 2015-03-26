@@ -1,6 +1,7 @@
 package de.yellowapple.miniLD58.core;
 
 import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.math.Rectangle;
 
 public abstract class CircleObject extends GameObject {
 
@@ -13,5 +14,9 @@ public abstract class CircleObject extends GameObject {
 
     public Circle getBounds() {
 	return new Circle(x, y, radius);
+    }
+
+    public Rectangle getHitboxBounds() {
+	return new Rectangle(x - radius, y - radius, radius * 2, radius * 2);
     }
 }

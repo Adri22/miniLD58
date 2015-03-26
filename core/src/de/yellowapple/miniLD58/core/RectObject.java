@@ -13,6 +13,12 @@ public abstract class RectObject extends GameObject {
 	this.height = height;
     }
 
+    public RectObject(ObjectID oID, int width, int height) {
+	super(oID);
+	this.width = width;
+	this.height = height;
+    }
+
     public Rectangle getBounds() {
 	return new Rectangle(x, y, width, height);
     }

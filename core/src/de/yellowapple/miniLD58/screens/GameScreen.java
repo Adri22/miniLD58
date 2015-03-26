@@ -22,7 +22,7 @@ public class GameScreen implements Screen {
     public GameScreen(GameMain g) {
 	game = g;
 	camera = new OrthographicCamera();
-	camera.setToOrtho(false, game.resolutionWidth, game.resolutionHeight);
+	camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	sound = new SoundHandler();
 	oHandler = new ObjectHandler();
 	gHandler = new GameHandler(oHandler);
@@ -33,6 +33,7 @@ public class GameScreen implements Screen {
 
     private void updateGame() {
 	oHandler.updateObjects();
+	gHandler.updateAI();
     }
 
     private void renderGame() {

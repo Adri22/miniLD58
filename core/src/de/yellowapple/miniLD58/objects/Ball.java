@@ -1,9 +1,11 @@
 package de.yellowapple.miniLD58.objects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import de.yellowapple.miniLD58.core.CircleObject;
 import de.yellowapple.miniLD58.core.GameMain;
@@ -20,13 +22,15 @@ public class Ball extends CircleObject {
     private direction currentDirection;
     private boolean outside;
     private float speed;
+    private float bounceAngle;
 
     public Ball(float x, float y, ObjectID oID, int radius) {
 	super(x, y, oID, radius);
 	outside = false;
-	speed = 0.1f;
+	speed = 0.5f;
 	velX = 1;
 	velY = 1;
+	bounceAngle = 0;
 	randomDirection();
     }
 
@@ -34,11 +38,12 @@ public class Ball extends CircleObject {
     protected boolean checkCollision(Array<GameObject> objects) {
 	for (int i = 0; i < objects.size; i++) {
 	    GameObject tempObject = objects.get(i);
-
 	    switch (tempObject.getID()) {
 		case PlayerBar:
-		    if (getBounds().overlaps(((CircleObject) tempObject).getBounds())) { // error
-			System.out.println("Ball - intersection - PlayerBar");
+		case AIBar:
+		    PlayerBar pb = (PlayerBar) objects.get(i);
+		    if (getHitboxBounds().overlaps(pb.getBounds())) {
+			bounceAngle = calculateBarCollisionAngle(pb.getBounds());
 			switch (currentDirection) {
 			    case RIGHT:
 				currentDirection = direction.LEFT;
@@ -57,16 +62,25 @@ public class Ball extends CircleObject {
 	    }
 	}
 
-	if (y > GameMain.resolutionHeight - (radius / 2) || y < 0 + (radius / 2)) {
-	    System.out.println("Ball - collision - top or bottom");
-	    return true;
-	}
+	/*
+	 * needs border top / down collision if (y + radius >
+	 * GameMain.resolutionHeight || y - radius < 0) { bounceAngle =
+	 * calculateBorderCollisionAngle(); return true; }
+	 */
 	return false;
     }
 
+    private float calculateBarCollisionAngle(Rectangle barBounds) {
+	return (((barBounds.y + (barBounds.height / 2)) - y) / (barBounds.height / 2)) * 75;
+    }
+
+    private float calculateBorderCollisionAngle() {
+	return (GameMain.resolutionWidth / 2) * 75; // not finished
+    }
+
     private void handleVelocity() {
-	velX += speed;
-	velY += speed;
+	velX += speed * MathUtils.cosDeg(bounceAngle);
+	velY += speed * -MathUtils.sinDeg(bounceAngle);
     }
 
     private void randomDirection() {
@@ -83,6 +97,7 @@ public class Ball extends CircleObject {
 	y = yPos;
 	velX = 1;
 	velY = 1;
+	bounceAngle = 0;
 	outside = false;
 	randomDirection();
     }
@@ -98,14 +113,14 @@ public class Ball extends CircleObject {
 	    reset(GameMain.resolutionWidth / 2, GameMain.resolutionHeight / 2);
 	}
 
-	switch (currentDirection) { // not finished yet
+	switch (currentDirection) {
 	    case LEFT:
-		x -= velX;
-		// y += velY;
+		x -= velX * Gdx.graphics.getDeltaTime();
+		y += velY * Gdx.graphics.getDeltaTime();
 		break;
 	    case RIGHT:
-		x += velX;
-		// y += velY;
+		x += velX * Gdx.graphics.getDeltaTime();
+		y += velY * Gdx.graphics.getDeltaTime();
 		break;
 	    default:
 		break;
@@ -128,6 +143,10 @@ public class Ball extends CircleObject {
 	sr.set(ShapeType.Filled);
 	sr.setColor(1, 1, 1, 0);
 	sr.circle(x, y, radius);
+	/*
+	 * hitbox rendering sr.set(ShapeType.Line); sr.setColor(1, 0, 0, 0);
+	 * sr.rect(x - radius, y - radius, radius * 2, radius * 2);
+	 */
     }
 
     @Override

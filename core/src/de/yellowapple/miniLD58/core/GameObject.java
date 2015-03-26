@@ -19,6 +19,14 @@ public abstract class GameObject {
 	this.velY = 0;
     }
 
+    public GameObject(ObjectID id) {
+	this.x = 0;
+	this.y = 0;
+	this.id = id;
+	this.velX = 0;
+	this.velY = 0;
+    }
+
     public abstract void update(Array<GameObject> objects);
 
     public abstract void update(Array<GameObject> objects, float velX, float velY);

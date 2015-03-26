@@ -14,7 +14,7 @@ public class MainMenuScreen implements Screen {
     public MainMenuScreen(GameMain g) {
 	game = g;
 	camera = new OrthographicCamera();
-	camera.setToOrtho(false, game.resolutionWidth, game.resolutionHeight);
+	camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     @Override
@@ -27,6 +27,9 @@ public class MainMenuScreen implements Screen {
 	game.batch.setProjectionMatrix(camera.combined);
 	game.batch.begin();
 
+	game.font.draw(game.batch, "Just Pong.", 300, 500);
+	game.font.draw(game.batch, "Use your arrow-keys (left / right)", 350, 450);
+	game.font.draw(game.batch, "Click to begin!", 350, 430);
 	game.font.draw(game.batch, "v." + game.version, 5, 15);
 
 	game.batch.end();
